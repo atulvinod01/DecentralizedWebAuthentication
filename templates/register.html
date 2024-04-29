@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Decentralized App</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <script src="/static/js/app.js"></script>
+    <title>Register - Decentralized App</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <script src="static/js/app.js"></script>
 </head>
 <body>
     <header>
-        <h1>Register to Your Account</h1>
+        <h1>Register a New Account</h1>
     </header>
     <main>
         <section>
             <h2>Register with MetaMask</h2>
-            <button onclick="connectWallet();">Connect MetaMask</button>
+            <p>If you do not have a MetaMask wallet, please create one using the MetaMask extension.</p>
+            <button id="connectButton">Connect MetaMask Wallet</button>
+            <p><small>After installing MetaMask, please refresh this page and click 'Connect MetaMask Wallet'.</small></p>
         </section>
     </main>
-
     <footer>
         <p>© 2024 Decentralized Authentication App. All rights reserved.</p>
     </footer>
