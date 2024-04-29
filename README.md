@@ -22,8 +22,8 @@ Follow these steps to get your development environment set up:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/your-repository.git
-   cd your-repository
+   git clone https://github.com/atulvinod01/DecentralizedWebAuthentication.git
+   cd DecentralizedWebAuthentication
    ```
 2. **Virtual Environment(optional)**
    ```bash
