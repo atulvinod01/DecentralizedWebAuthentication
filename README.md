@@ -8,6 +8,8 @@ This project demonstrates a decentralized authentication system using the Ethere
 - **MetaMask Integration**: Allows users to authenticate using their MetaMask wallet, ensuring security and ease of use.
 - **Flask Web Application**: A simple yet powerful backend built with Flask to handle requests and serve the frontend.
 - **Smart Contract Interaction**: Implements smart contracts for managing authentication logic.
+- **Decentralized File Storage**: Allows users to upload and retrieve files using IPFS, providing decentralized storage solutions.
+
 
 ## Prerequisites
 
@@ -15,6 +17,11 @@ Before you can run this project, you'll need the following installed:
 - [Python 3](https://www.python.org/downloads/)
 - [Node.js and npm](https://nodejs.org/en/download/) (for any potential frontend JavaScript libraries you might use)
 - [MetaMask](https://metamask.io/) browser extension installed and configured
+- IPFS node: Ensure you have an IPFS node running locally or connect to a remote node. You can install IPFS from [IPFS Installation Guide](https://docs.ipfs.io/install/).
+
+### Setup
+- Ensure `MetaMask` is connected to the appropriate Ethereum network.
+- Configure your environment variables for connecting to Ethereum and IPFS if necessary.
 
 ## Installation
 
@@ -35,8 +42,20 @@ Follow these steps to get your development environment set up:
    pip install -r requirements.txt
    ```
 4. **Configure your environment variables**
-   Create a .env file in the root directory and update it with your specific variables:
+   
+   *Create a .env file in the root directory and update it with your specific variables:*
    ```bash
    SECRET_KEY=your_secret_key_here
    WEB3_PROVIDER=https://mainnet.infura.io/v3/your_infura_project_id
+   ```
+### Running the Application
+
+   **Start IPFS Daemon:**
+   ```bash
+   ipfs init    #Once after installation
+   ipfs daemon
+   ```
+   **Start the server:**
+   ```bash
+   python3 app.py
    ```
