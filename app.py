@@ -4,12 +4,14 @@ from web3 import Web3, HTTPProvider
 from os import environ
 from eth_account.messages import encode_defunct
 import logging
+import ipfshttpclient
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables
 
 app = Flask(__name__)
 app.secret_key = environ.get('SECRET_KEY', 'very_secret_key')  # Important for session security
+client = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001/http')
 
 logging.basicConfig(level=logging.INFO)
 
@@ -70,6 +72,20 @@ def logout():
     if user:
         logging.info(f"User {user} logged out successfully.")
     return redirect(url_for('index'))
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    file = request.files['file']
+    res = client.add(file)
+    return jsonify({'message': 'File uploaded', 'hash': res['Hash']})
+
+@app.route('/download/<hash>', methods=['GET'])
+def get_file(hash):
+    try:
+        file_data = client.cat(hash)
+        return file_data
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
