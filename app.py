@@ -1,10 +1,11 @@
 # app.py
-from flask import Flask, request, jsonify, session, redirect, url_for, render_template, abort
+from flask import Flask, request, jsonify, session, redirect, url_for, render_template, abort, send_file
 from web3 import Web3, HTTPProvider
 from os import environ
 from eth_account.messages import encode_defunct
 import logging
 import ipfshttpclient
+import io
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables
@@ -77,15 +78,32 @@ def logout():
 def upload_file():
     file = request.files['file']
     res = client.add(file)
-    return jsonify({'message': 'File uploaded', 'hash': res['Hash']})
+    hash_value = res['Hash']
+    return render_template('upload.html', hash=hash_value)
 
-@app.route('/download/<hash>', methods=['GET'])
-def get_file(hash):
+@app.route('/download', methods=['GET'])
+def show_download_page():
+    # This route just renders the download page.
+    return render_template('download.html')
+
+@app.route('/download/file', methods=['GET'])
+def download_file():
+    # This route handles the actual file download.
+    hash_value = request.args.get('hash')
+    if not hash_value:
+        return jsonify({'error': 'No hash provided'}), 400
+    
     try:
-        file_data = client.cat(hash)
-        return file_data
+        file_data = client.cat(hash_value)
+        return send_file(
+            io.BytesIO(file_data),
+            attachment_filename=f"{hash_value}.ipfs",  # Assuming .ipfs; adjust as needed
+            as_attachment=True
+        )
     except Exception as e:
-        return jsonify({'error': str(e)})
+        logging.error(f"Failed to download file: {e}")
+        return jsonify({'error': str(e)}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

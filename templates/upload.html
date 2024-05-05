@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploaded</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+        #hash {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            word-break: break-all;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>File Uploaded Successfully!</h1>
+    <div id="hash">{{ hash }}</div>
+    <button onclick="copyHash()">Copy Hash</button>
+
+    <script>
+        function copyHash() {
+            const hashText = document.getElementById('hash').textContent;
+            navigator.clipboard.writeText(hashText)
+                .then(() => alert('Hash copied to clipboard!'))
+                .catch(err => console.error('Failed to copy hash: ', err));
+        }
+    </script>
+</body>
+</html>
