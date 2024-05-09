@@ -12,7 +12,7 @@
     </header>
     <main>
         <section>
-            <h2>Welcome Back!</h2>
+            <h2>Welcome Back, {{ user_address }}!</h2>
             <p>Here's your data from the blockchain:</p>
             <!-- File Upload Form -->
             <form action="/upload" method="post" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
                 <button type="submit">Upload to IPFS</button>
             </form>
             <!-- Link to Download Page -->
-            <p>Need to download a file? <a href="/download">Go to the download page</a>.</p>
+            <p>Need to download a file? <button onclick="window.location.href='/download';">Downloads</button>.</p>
             <!-- User data display -->
             <p><a href="logout">Logout</a></p>
         </section>

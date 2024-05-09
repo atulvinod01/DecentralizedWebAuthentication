@@ -26,9 +26,11 @@
 <body>
     <h1>Download File from IPFS</h1>
     <p>Enter the IPFS hash of the file you wish to download:</p>
-    <form action="/download" method="get">
+    <form action="/download/file" method="get">
         <input type="text" name="hash" placeholder="Enter IPFS hash here" required>
         <button type="submit">Download File</button>
-    </form>
+    </form>    
+    <br>
+    <button onclick="window.location.href='/dashboard';">Back to Dashboard</button>
 </body>
 </html>

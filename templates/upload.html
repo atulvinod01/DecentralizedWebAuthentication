@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Uploaded</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            text-align: center;
-        }
-        #hash {
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            display: inline-block;
-            word-break: break-all;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Operation Successful</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-    <h1>File Uploaded Successfully!</h1>
-    <div id="hash">{{ hash }}</div>
-    <button onclick="copyHash()">Copy Hash</button>
+    <header>
+        <h1>Operation Successful</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Your file was processed successfully!</h2>
+            <p>The IPFS hash of your file is:</p>
+            <div id="hash">{{ hash }}</div>
+            <button onclick="copyHash()">Copy Hash</button>
+            <button onclick="window.location.href='/dashboard';">Back to Dashboard</button>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Decentralized Authentication App. All rights reserved.</p>
+    </footer>
 
     <script>
         function copyHash() {
