@@ -1,4 +1,3 @@
-# event_logging.py
 import logging
 from logging.handlers import RotatingFileHandler
 import json
@@ -34,13 +33,20 @@ def log_event(message, level='info'):
 
 def log_request():
     """Function to log detailed request data, used as a before_request action in Flask."""
-    request_data = {
+    # Safely attempt to parse JSON only if content-type is application/json
+    request_data = {}
+    if request.content_type == 'application/json':
+        try:
+            request_data['data'] = request.get_json()
+        except ValueError:
+            request_data['data'] = "Invalid JSON"
+    request_data.update({
         'source_ip': request.remote_addr,
         'destination_ip': request.host,
         'user_agent': request.user_agent.string,
         'endpoint': request.endpoint,
         'method': request.method,
-        'data': request.get_json() or request.data,
         'user': session.get('user', 'Anonymous')
-    }
+    })
     log_event(json.dumps(request_data), 'debug')
+

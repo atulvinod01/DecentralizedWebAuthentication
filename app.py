@@ -6,7 +6,7 @@ from eth_account.messages import encode_defunct
 import ipfshttpclient
 import io
 from dotenv import load_dotenv
-from event_logging import log_request, log_event  # Import from the custom logging.py
+from event_logging import log_request, log_event  
 
 load_dotenv()  # Load environment variables
 
@@ -15,7 +15,7 @@ app.secret_key = environ.get('SECRET_KEY', 'very_secret_key')  # Important for s
 client = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001/http')
 
 # Setup enhanced logging
-app.before_request(log_request)  # Log all requests
+app.before_request(log_request) 
 
 # Establish a connection to an Ethereum node via Web3
 web3_provider = environ.get('WEB3_PROVIDER', 'http://localhost:8545')
