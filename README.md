@@ -9,6 +9,7 @@ This project demonstrates a decentralized authentication system using the Ethere
 - **Flask Web Application**: A simple yet powerful backend built with Flask to handle requests and serve the frontend.
 - **Smart Contract Interaction**: Implements smart contracts for managing authentication logic.
 - **Decentralized File Storage**: Allows users to upload and retrieve files using IPFS, providing decentralized storage solutions.
+- **Machine Learning Integration for Security Vulnerability Detection**: Incorporates a Random Forest-based machine learning model to analyze and predict security vulnerabilities from event logs, enhancing the system's overall security posture.
 
 
 ## Prerequisites
@@ -59,3 +60,12 @@ Follow these steps to get your development environment set up:
    ```bash
    python3 app.py
    ```
+### Machine Learning Model Integration
+**To use the machine learning model for detecting security vulnerabilities, ensure the following**:
+
+Install additional Python libraries required for machine learning processing:
+
+```bash
+pip install pandas scikit-learn matplotlib seaborn joblib
+```
+The machine learning model script (ml_model.py) should be placed in the root directory. This script is responsible for training the model, making predictions, and visualizing the results.
