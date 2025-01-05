@@ -59,12 +59,3 @@ Follow these steps to get your development environment set up:
    ```bash
    python3 app.py
    ```
-### Machine Learning Model Integration
-**To use the machine learning model for detecting security vulnerabilities, ensure the following**:
-
-Install additional Python libraries required for machine learning processing:
-
-```bash
-pip install pandas scikit-learn matplotlib seaborn joblib
-```
-The machine learning model script (ml_model.py) should be placed in the root directory. This script is responsible for training the model, making predictions, and visualizing the results.
