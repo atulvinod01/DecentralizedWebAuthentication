@@ -7,7 +7,6 @@ This project demonstrates a decentralized authentication system using the Ethere
 - **Blockchain Authentication**: Utilizes Ethereum for secure and transparent user authentication.
 - **MetaMask Integration**: Allows users to authenticate using their MetaMask wallet, ensuring security and ease of use.
 - **Flask Web Application**: A simple yet powerful backend built with Flask to handle requests and serve the frontend.
-- **Smart Contract Interaction**: Implements smart contracts for managing authentication logic.
 - **Decentralized File Storage**: Allows users to upload and retrieve files using IPFS, providing decentralized storage solutions.
 - **Machine Learning Integration for Security Vulnerability Detection**: Incorporates a Random Forest-based machine learning model to analyze and predict security vulnerabilities from event logs, enhancing the system's overall security posture.
 
